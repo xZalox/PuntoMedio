@@ -1,0 +1,74 @@
+<html>
+
+<head>
+
+    <title>Aproximación Punto Medio</title>
+
+    <script>
+
+        function calcular() {
+            var a, b, objetivo, err, x, y, salir = 0, contar;
+            
+                a = parseFloat(document.getElementById("a").value);
+                b = parseFloat(document.getElementById("b").value);
+                objetivo = parseFloat(document.getElementById("obj").value);
+                err = parseFloat(document.getElementById("err").value);
+
+                x = (a+b)/2;
+                contar = 1
+                y = (x+b)/2;
+                contar = contar + 1;
+            do{
+                if(((x+y)/2) == objetivo || (((x+y)/2) <= (objetivo + err) && ((x+y)/2) >= (objetivo - err))){
+                    document.getElementById("iteraciones").innerHTML = contar;
+                    console.log("Resultado de la función: ")
+                    console.log((x+y)/2)
+                    salir = 1;
+                }else if (((x+y)/2) > 0 && contar < 100){
+                    y = (x+y)/2;
+                    contar = contar + 1;
+                    x = (x+y)/2;
+                    contar = contar + 1;
+                }
+                else{
+                    document.getElementById("Suma").innerHTML = "No se encontro"
+                    salir = 1;
+                }
+
+            } while(salir == 0)
+        }
+
+    </script>
+
+</head>
+
+
+
+<body bgcolor=#5CD5F3 
+<form name="funcion">
+    Introduzca el Limite inicial Inferior a= <input id="a" type="text" size=3>
+    <br>
+    <br>
+    Introduzca el Limite inicial Superior b= <input id="b" type="text" size=3>
+    <br>
+    <br>
+    Introduzca el Objetivo <input id="obj" type="text" size=3>
+    <br>
+    <br>
+    Introduzca el Error <input id="err" type="text" size=3>
+    <br>
+    <br>
+
+    <input type="button" value="Calcular" OnClick="calcular()">
+    <br>
+    <br>
+    <p>Número de Iteraciones: </p>
+    <p id="iteraciones"></p>
+    <HR>
+
+
+</form>
+
+</body>
+
+</html>
